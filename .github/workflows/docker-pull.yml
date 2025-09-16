@@ -60,7 +60,9 @@ jobs:
 
       - name: 检查镜像推送成功
         if: ${{ steps.pull_tag_push.outcome == 'success' }}
-        run: echo "Docker 镜像推送成功"
+        run: 
+          echo "Docker 镜像推送成功"
+          echo "docker pull ${{ github.event.inputs.TARGET_REGISTRY }}/${{ github.event.inputs.TARGET_REPOSITORY }}/${{ github.event.inputs.NEW_NAME }}"
 
       - name: 检查镜像推送失败
         if: ${{ steps.pull_tag_push.outcome != 'success' }}
